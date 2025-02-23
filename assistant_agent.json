@@ -1,0 +1,18 @@
+{
+  "type": "AssistantAgentState",
+  "version": "1.0.0",
+  "llm_context": {
+    "messages": [
+      {
+        "content": "write a tagline for fashion girl shirt",
+        "source": "user",
+        "type": "UserMessage"
+      },
+      {
+        "content": "Here are some tagline ideas for a fashion girl's shirt:\n\n1. \"Elevate Your Style\"\n2. \"Vibe High, Wear It\"\n3. \"Unscripted Elegance\"\n4. \"Make an Entrance\"\n5. \"Where Fashion Meets Attitude\"\n6. \"Own The Day, One Shirt at a Time\"\n7. \"Confident Threads for the Fearless Feminine\"\n8. \"Speak Your Style, Unleash Your Personality\"\n9. \"Step Up Your Wardrobe, Level Up Your Life\"\n10. \"Fashion That Makes You Come Alive\"\n\nWhich one do you like best?",
+        "source": "assistant",
+        "type": "AssistantMessage"
+      }
+    ]
+  }
+}
