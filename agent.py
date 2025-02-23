@@ -4,7 +4,7 @@ from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_core.models import ModelInfo, ModelFamily
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.ui import Console
-
+import json 
 
 async def get_weather(city:str) -> str:
   return f"อุณหภูมิที่{city} คือ 40 องศา"
@@ -28,6 +28,9 @@ async def main():
     tools=[get_weather],
     reflect_on_tool_use=True
   )
+  
+  # with open("agent.json", "w") as f:
+  #   json.dump(weather_agent.dump_component().model_dump(), f, indent=4)
   
   stream = weather_agent.run_stream(task="ขอข้อมูลสภาพอากาศที่จังหวัดเชียงราย")
   await Console(stream)

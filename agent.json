@@ -1,0 +1,61 @@
+{
+    "provider": "autogen_agentchat.agents.AssistantAgent",
+    "component_type": "agent",
+    "version": 1,
+    "component_version": 1,
+    "description": "An agent that provides assistance with tool use.",
+    "label": "Water Agent",
+    "config": {
+        "name": "weather",
+        "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+                "model": "llama3.2:latest",
+                "model_info": {
+                    "vision": false,
+                    "function_calling": true,
+                    "json_output": false,
+                    "family": "unknown"
+                },
+                "base_url": "http://localhost:11434/v1"
+            }
+        },
+        "tools": [
+            {
+                "provider": "autogen_core.tools.FunctionTool",
+                "component_type": "tool",
+                "version": 1,
+                "component_version": 1,
+                "description": "Create custom tools by wrapping standard Python functions.",
+                "label": "FunctionTool",
+                "config": {
+                    "source_code": "async def get_weather(city:str) -> str:\n  return f\"\u0e2d\u0e38\u0e13\u0e2b\u0e20\u0e39\u0e21\u0e34\u0e17\u0e35\u0e48{city} \u0e04\u0e37\u0e2d 40 \u0e2d\u0e07\u0e28\u0e32\"\n",
+                    "name": "get_weather",
+                    "description": "",
+                    "global_imports": [],
+                    "has_cancellation_support": false
+                }
+            }
+        ],
+        "handoffs": [],
+        "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+        },
+        "description": "An agent that provides assistance with ability to use tools.",
+        "system_message": "\u0e04\u0e38\u0e13\u0e04\u0e37\u0e2d\u0e19\u0e31\u0e01\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e2d\u0e32\u0e01\u0e32\u0e28 \u0e08\u0e07\u0e19\u0e33\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e21\u0e32\u0e2a\u0e23\u0e38\u0e1b \u0e41\u0e25\u0e30\u0e15\u0e2d\u0e1a\u0e01\u0e25\u0e31\u0e1a",
+        "model_client_stream": false,
+        "reflect_on_tool_use": true,
+        "tool_call_summary_format": "{result}"
+    }
+}
